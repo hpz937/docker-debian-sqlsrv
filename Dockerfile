@@ -26,3 +26,4 @@ RUN pecl install sqlsrv && \
 COPY openssl.cnf /etc/ssl/openssl.cnf
 
 CMD ["bash"]
+WORKDIR /app
