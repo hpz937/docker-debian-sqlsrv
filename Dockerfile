@@ -9,7 +9,7 @@ RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
     curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
     curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
 	apt-get update && \
-	ACCEPT_EULA=Y apt-get install php8.1 php8.1-dev php8.1-xml php8.1-curl php8.1-smbclient php8.1-gd php8.1-mbstring php8.1-zip php8.1-ssh2 php8.1-sqlite3 msodbcsql17 mssql-tools -y --allow-unauthenticated && \
+	ACCEPT_EULA=Y apt-get install php8.1 php8.1-dev php8.1-xml php8.1-curl php8.1-smbclient php8.1-gd php8.1-mbstring php8.1-zip php8.1-ssh2 php8.1-sqlite3 php8.1-imap msodbcsql17 mssql-tools -y --allow-unauthenticated && \
 	echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile && \
 	echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc && \
 	apt-get install unixodbc-dev -y
