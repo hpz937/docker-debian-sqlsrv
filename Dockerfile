@@ -9,7 +9,7 @@ RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
     curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
     curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
 	apt-get update && \
-	ACCEPT_EULA=Y apt-get install php8.1 php8.1-dev php8.1-xml php8.1-curl php8.1-smbclient php8.1-gd php8.1-mbstring php8.1-zip php8.1-ssh2 php8.1-sqlite3 php8.1-imap msodbcsql18 mssql-tools -y --allow-unauthenticated && \
+	ACCEPT_EULA=Y apt-get install php8.2 php8.2-dev php8.2-xml php8.2-curl php8.2-smbclient php8.2-gd php8.2-mbstring php8.2-zip php8.2-ssh2 php8.2-sqlite3 php8.2-imap php8.2-mysqli msodbcsql18 mssql-tools -y --allow-unauthenticated && \
 	echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile && \
 	echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc && \
 	apt-get install unixodbc-dev -y
@@ -20,9 +20,9 @@ RUN curl https://getcomposer.org/download/latest-stable/composer.phar > /tmp/com
     chmod +x /usr/local/bin/composer
 RUN pecl install sqlsrv && \
     pecl install pdo_sqlsrv && \
-	printf "; priority=20\nextension=sqlsrv.so\n" > /etc/php/8.1/mods-available/sqlsrv.ini && \
-	printf "; priority=30\nextension=pdo_sqlsrv.so\n" > /etc/php/8.1/mods-available/pdo_sqlsrv.ini && \
-	phpenmod -v 8.1 sqlsrv pdo_sqlsrv
+	printf "; priority=20\nextension=sqlsrv.so\n" > /etc/php/8.2/mods-available/sqlsrv.ini && \
+	printf "; priority=30\nextension=pdo_sqlsrv.so\n" > /etc/php/8.2/mods-available/pdo_sqlsrv.ini && \
+	phpenmod -v 8.2 sqlsrv pdo_sqlsrv
 COPY openssl.cnf /etc/ssl/openssl.cnf
 
 CMD ["bash"]
