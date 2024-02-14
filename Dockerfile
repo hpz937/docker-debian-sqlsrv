@@ -7,11 +7,11 @@ RUN apt-get update && \
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     echo "deb https://packages.sury.org/php/ bullseye main" > /etc/apt/sources.list.d/php.list && \
     curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
-    curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
+    curl https://packages.microsoft.com/config/debian/11/prod.list | tee /etc/apt/sources.list.d/mssql-release.list && \
 	apt-get update && \
-	ACCEPT_EULA=Y apt-get install php8.2 php8.2-dev php8.2-xml php8.2-curl php8.2-smbclient php8.2-gd php8.2-mbstring php8.2-zip php8.2-ssh2 php8.2-sqlite3 php8.2-imap php8.2-mysqli msodbcsql18 mssql-tools -y --allow-unauthenticated && \
-	echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile && \
-	echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc && \
+	ACCEPT_EULA=Y apt-get install php8.2 php8.2-dev php8.2-xml php8.2-curl php8.2-smbclient php8.2-gd php8.2-mbstring php8.2-zip php8.2-ssh2 php8.2-sqlite3 php8.2-imap php8.2-mysqli msodbcsql18 mssql-tools18 -y --allow-unauthenticated && \
+	echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bash_profile && \
+	echo 'export PATH="$PATH:/opt/mssql-tools18/bin"' >> ~/.bashrc && \
 	apt-get install unixodbc-dev -y
 RUN sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen && \
     locale-gen
